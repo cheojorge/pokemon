@@ -1,0 +1,10 @@
+.continer{
+    margin: 0 auto;
+    text-align: center;
+    
+}
+img{
+    border: 2px solid black;
+    margin: 3px;
+    background-color: silver;
+}
