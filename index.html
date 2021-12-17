@@ -13,15 +13,52 @@
                 return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${id}.png`;
             }
             for (let i = 1; i <= 151; i++) {
-                let nuevaimg = `<img src='${generarUrlImagen(i)}'>`
+                let nuevaimg = `<img src='${generarUrlImagen(i)}' data-id='${i}''>`
                 $('.continer').append(nuevaimg);
             }
+            function infoPokemon(id){
+                $.get(`https://pokeapi.co/api/v2/pokemon/${id}/`, function(res) {
+                    $('.name').text(res.name);
+                    $('.heigth').text('Height: '+res.height);
+                    $('.weight').text('Weight: '+res.weight);
+                    let cadena = '';
+                    for (const key in res.types) {
+                        cadena = cadena + ' '+res.types[key].type.name
+                    }
+                    $('.type').text('Type: '+cadena);
+                    $('.poke').attr('src',generarUrlImagen(id))
+                    console.log(res)
+                    
+                }, "json");
+            }
+            $('.continer img').click(function(){
+                let id = $(this).data('id');
+                infoPokemon(id);
+                $('.pokedex').show('slow')
+
+                
+            })
+            $('.info button').click(function(){
+                $('.pokedex').hide('slow')
+            })
+            
         })
     </script>
     
 </head>
 <body>
+    <div class="pokedex">
+        <div class="info">
+           <h1 class="name">Nombre</h1>
+           <img class="poke" src="" alt="">
+           <h3 class="heigth">Height</h3> 
+           <h3 class="weight">Weight</h3> 
+           <h3 class="type">Types</h3> 
+           <button>Salir</button>
+        </div>
+    </div>
     <div class="continer">
     </div>
+    
 </body>
 </html>

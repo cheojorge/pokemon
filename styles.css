@@ -8,3 +8,29 @@ img{
     margin: 3px;
     background-color: silver;
 }
+.pokedex{
+    background-image: url("fondo.png");
+    width: 500px;
+    height: 500px;
+    top: calc(50% - 250px);
+    left: calc(50% - 250px);
+    position:absolute;
+    display: none;
+}
+.info{
+    background-color: aliceblue;
+    margin-top: 257px;
+    margin-left:125px ;
+    width: 278px;
+    height: 200px;
+    border-radius: 10px;
+}
+.info img{
+    background-color: aliceblue;
+    border: none;
+    position: absolute;
+    top: 260px;
+    left: 300px;
+    
+    
+}
